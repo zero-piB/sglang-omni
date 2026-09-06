@@ -63,8 +63,10 @@ class FunCosyVoice3PipelineConfig(PipelineConfig):
                 flow_batch_admission_frames=8000,
                 max_batch_size=16,
                 max_batch_wait_ms=30,
-                # Opt-in; off by default (one-time startup compile cost).
-                enable_dit_torch_compile=False,
+                # note (db-ol): on by default, the compiled DiT removes most of
+                # the per step dispatch cost that saturates the vocoder thread.
+                # Costs about 100 s at startup, set false to skip it.
+                enable_dit_torch_compile=True,
             ),
             gpu=0,
             terminal=True,

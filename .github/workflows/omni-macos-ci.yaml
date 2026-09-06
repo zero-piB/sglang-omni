@@ -1,4 +1,4 @@
-name: Apple Silicon CI
+name: Omni macOS CI
 
 # Runs the Apple Silicon (macOS arm64) unit-test subset on a GitHub-hosted M1
 # runner: ./install.sh builds the .venv-apple environment (SGLang v0.5.18 from
@@ -17,11 +17,11 @@ on:
       - "sglang_omni/models/qwen3_asr/**"
       - "tests/unit_test/platforms/**"
       - "tests/unit_test/qwen3_asr/**"
-      - ".github/workflows/apple-ci.yaml"
+      - ".github/workflows/omni-macos-ci.yaml"
   workflow_dispatch:
 
 concurrency:
-  group: apple-ci-${{ github.event.pull_request.number || github.ref }}
+  group: omni-macos-ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 permissions:
